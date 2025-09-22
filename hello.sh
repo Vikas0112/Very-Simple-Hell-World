@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Hello from Jenkins Pipeline!"
+echo "Hello vikas rajput!"
 echo "Running on host: $(hostname)"
 echo "Current user: $(whoami)"
 echo "Date & Time: $(date)"
