@@ -31,8 +31,8 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'chmod +x hello.sh'
-                sh './hello.sh'
+                sh 'chmod +x hello-main.sh'
+                sh './hello-main.sh'
             }
         }
 
