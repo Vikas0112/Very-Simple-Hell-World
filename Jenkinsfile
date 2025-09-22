@@ -6,11 +6,14 @@ pipeline {
                 sh 'echo "Building project..."'
             }
         }
+        
         stage('Test') {
-            steps {
-                sh './hello.sh'
-            }
-        }
+    steps {
+        sh 'chmod +x hello.sh'
+        sh './hello.sh'
+    }
+}
+
         stage('Deploy') {
             steps {
                 sh 'echo "Deploying project..."'
