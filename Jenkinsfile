@@ -5,7 +5,7 @@ pipeline {
         choice(
             name: 'BRANCH_NAME',
             choices: ['main', 'master'],
-            description: 'Select the branch to build'
+            description: 'Select which branch to build'
         )
     }
 
@@ -19,7 +19,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'echo "Building project from ${params.BRANCH_NAME} branch..."'
+                echo "Building project from ${params.BRANCH_NAME} branch..."
             }
         }
 
@@ -32,7 +32,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'echo "Deploying project from ${params.BRANCH_NAME} branch..."'
+                echo "Deploying project from ${params.BRANCH_NAME} branch..."
             }
         }
     }
