@@ -1,18 +1,40 @@
 pipeline {
     agent any
+
+    parameters {
+        choice(
+            name: 'BRANCH_NAME',
+            choices: ['main', 'master'],
+            description: 'Select the branch to build from GitHub repo'
+        )
+    }
+
     stages {
+        stage('Checkout') {
+            steps {
+                checkout([$class: 'GitSCM',
+                    branches: [[name: "*/${params.BRANCH_NAME}"]],
+                    doGenerateSubmoduleConfigurations: false,
+                    extensions: [],
+                    userRemoteConfigs: [[
+                        url: 'https://github.com/Vikas0112/Very-Simple-Hell-World.git'
+                    ]]
+                ])
+            }
+        }
+
         stage('Build') {
             steps {
                 sh 'echo "Building project..."'
             }
         }
-        
-        stage('Test-main') {
-    steps {
-        sh 'chmod +x hello.sh'
-        sh './hello.sh'
-    }
-}
+
+        stage('Test') {
+            steps {
+                sh 'chmod +x hello.sh'
+                sh './hello.sh'
+            }
+        }
 
         stage('Deploy') {
             steps {
