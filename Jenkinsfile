@@ -1,21 +1,25 @@
 pipeline {
     agent any
 
+    parameters {
+        choice(
+            name: 'BRANCH_NAME',
+            choices: ['main', 'master'],
+            description: 'Select the branch to build'
+        )
+    }
+
     stages {
-        stage('Checkout - master') {
+        stage('Checkout') {
             steps {
-                checkout([$class: 'GitSCM',
-                    branches: [[name: '*/master']],
-                    userRemoteConfigs: [[
-                        url: 'https://github.com/Vikas0112/Very-Simple-Hell-World.git'
-                    ]]
-                ])
+                git branch: "${params.BRANCH_NAME}",
+                    url: 'https://github.com/Vikas0112/Very-Simple-Hell-World.git'
             }
         }
 
         stage('Build') {
             steps {
-                sh 'echo "Building project from MASTER branch..."'
+                sh 'echo "Building project from ${params.BRANCH_NAME} branch..."'
             }
         }
 
@@ -28,7 +32,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'echo "Deploying project from MASTER branch..."'
+                sh 'echo "Deploying project from ${params.BRANCH_NAME} branch..."'
             }
         }
     }
