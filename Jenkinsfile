@@ -7,7 +7,7 @@ pipeline {
             }
         }
         
-        stage('Test') {
+        stage('Test-main') {
     steps {
         sh 'chmod +x hello.sh'
         sh './hello.sh'
