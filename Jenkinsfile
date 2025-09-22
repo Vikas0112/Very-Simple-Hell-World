@@ -9,8 +9,8 @@ pipeline {
         
         stage('Test-master') {
     steps {
-        sh 'chmod +x hello.sh'
-        sh './hello.sh'
+        sh 'chmod +x hello-master.sh'
+        sh './hello-master.sh'
     }
 }
 
