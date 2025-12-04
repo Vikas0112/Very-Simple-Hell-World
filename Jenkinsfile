@@ -9,6 +9,7 @@ pipeline {
         )
     }
 
+    hello
     stages {
         stage('Checkout') {
             steps {
