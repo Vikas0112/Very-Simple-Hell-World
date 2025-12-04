@@ -9,6 +9,8 @@ pipeline {
         )
     }
 
+    hello
+    vikas
     stages {
         stage('Checkout') {
             steps {
